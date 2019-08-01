@@ -10,20 +10,40 @@ class App extends Component {
     userScore: 0
   };
 
-  handleClickEvent = (id) => {
+  handleClickEvent = (id,) => {
     console.log("id", id)
-    let click = false;
+    let userGuess = false;
     let cartoonArray = this.state.cartoons.map(cartoon => {
 
-      if (cartoon.id !== id) {
-        click = true;
-        this.shuffleCards(this.state.cartoons);
-        this.setState({ userScore: this.state.userScore + 1 })
-      } else   
-        click = true;
-        this.setState({ userScore: 0, });
-        this.state.click = false;
+      //checking if the id of the clicked cartoon is equal to the current cartoon of the loop (cartoon[i])
+      if (cartoon.id === id && cartoon.click === false) {
+        cartoon.click = true;
+        userGuess = true;
+      } 
+      return cartoon;
     })
+    this.shuffleCards(cartoonArray);
+    this.handleGuess(userGuess);
+  }
+
+  handleGuess = (userGuess) => {
+    if (userGuess === true) {
+      this.setState({ userScore: this.state.userScore + 1 })
+      if (this.state.userScore > 11) {
+        alert("You Win!!!!!!!")
+        this.state.cartoons.map((cartoon) => {
+          cartoon.click = false;
+          return cartoon;
+        })
+      }
+    } else {
+      this.setState({ userScore: 0 })
+      alert("You lose")
+      this.state.cartoons.map((cartoon) => {
+        cartoon.click = false;
+        return cartoon;
+      })
+    }
   }
 
   shuffleCards = array => {
