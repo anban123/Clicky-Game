@@ -4,7 +4,7 @@ import "./style.css";
 function CartoonCard(props) {
   return (
     <div className="card">
-        <img alt={props.name} src={props.image} onClick={props.handleClick} />
+        <img style={{ height: 200 }} alt={props.name} src={props.image} onClick={props.handleClick} />
     </div>
   );
 }
