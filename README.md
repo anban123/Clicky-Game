@@ -1,6 +1,6 @@
 # Clicky-Game
 
-#### Link: https://anban123.github.io/Clicky-Game/
+#### Link: [Heroku](https://powerful-badlands-68110.herokuapp.com/)
 
 #### Summary:
 For this assignment, I created a memory game with React. I broke up my application's UI into components, managed component state, and responded to user events.
